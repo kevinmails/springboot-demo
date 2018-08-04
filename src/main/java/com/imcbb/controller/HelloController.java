@@ -22,12 +22,6 @@ public class HelloController {
 
         orderRepo.save(new Order("110","order1","kevin", LocalDateTime.now()));
 
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Order order2 =  orderRepo.findById("110").get();
         System.out.println(order2.orderTime);
         System.out.println(order2.name);
