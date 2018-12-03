@@ -23,6 +23,10 @@ public class MerchantFactory implements ApplicationContextAware {
                 .orElseThrow(() -> new RuntimeException("商户ID:[" + id + "]服务找不到"));
     }
 
+    public Map<String, FundService> getFundServiceList() {
+        return SERVICE;
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         applicationContext.getBeansOfType(FundService.class).forEach((k, v) -> SERVICE.put(v.getServiceID(), v));

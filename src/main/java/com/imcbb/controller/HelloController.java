@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -37,6 +38,12 @@ public class HelloController {
     @RequestMapping("/service")
     public String service() {
         FundService fundService = merchantFactory.getFundServiceById("003");
+        return fundService.toString();
+    }
+
+    @RequestMapping("/servicelist")
+    public String serviceList() {
+        Map<String,FundService> fundService = merchantFactory.getFundServiceList();
         return fundService.toString();
     }
 
