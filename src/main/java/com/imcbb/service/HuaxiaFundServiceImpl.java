@@ -1,5 +1,6 @@
 package com.imcbb.service;
 
+import com.imcbb.bean.FundMerchant;
 import org.springframework.stereotype.Service;
 
 /**
@@ -7,10 +8,9 @@ import org.springframework.stereotype.Service;
  */
 @Service("huaxiaFund")
 public class HuaxiaFundServiceImpl implements FundService {
-    private static final String MERCHANT_ID = "003";
     @Override
     public String getServiceID() {
-        return MERCHANT_ID;
+        return FundMerchant.MERCHANT_ID_HUAXIA;
     }
 
     @Override
