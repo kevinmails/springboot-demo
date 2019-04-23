@@ -4,6 +4,8 @@ import com.imcbb.bean.jedis.Order;
 import com.imcbb.bean.jedis.OrderRepository;
 import com.imcbb.factory.MerchantFactory;
 import com.imcbb.service.FundService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +26,12 @@ public class HelloController {
     @Autowired
     OrderRepository orderRepo;
 
+    Logger LOG = LoggerFactory.getLogger(this.getClass());
+
     @RequestMapping("/hello")
     public String hello() {
+
+
 
         orderRepo.save(new Order("110", "order1", "kevin", LocalDateTime.now()));
 
@@ -38,6 +44,7 @@ public class HelloController {
     @RequestMapping("/service")
     public String service() {
         FundService fundService = merchantFactory.getFundServiceById("003");
+        LOG.info("aaaaaa");
         return fundService.toString();
     }
 

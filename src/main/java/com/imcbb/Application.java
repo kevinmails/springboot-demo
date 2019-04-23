@@ -3,6 +3,8 @@ package com.imcbb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.connection.RedisPassword;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -18,9 +20,10 @@ public class Application {
 
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
-        JedisConnectionFactory jedisConFactory = new JedisConnectionFactory();
-        jedisConFactory.setHostName("imcbb.com");
-        jedisConFactory.setPort(6379);
+
+        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration("imcbb.com", 65379);
+        configuration.setPassword(RedisPassword.of("Rediss!!Pass010"));
+        JedisConnectionFactory jedisConFactory = new JedisConnectionFactory(configuration);
         return jedisConFactory;
     }
 
